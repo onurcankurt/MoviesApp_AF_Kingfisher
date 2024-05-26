@@ -20,7 +20,11 @@ class DetailsVC: UIViewController {
 
         if let m = detailMovie{
             nameLabel.text = m.ad
-            movieImageView.image = UIImage(named: m.resim!)
+            if let url = URL(string: "http://kasimadalan.pe.hu/filmler_yeni/resimler/\(m.resim!)"){
+                DispatchQueue.main.async {
+                    self.movieImageView.kf.setImage(with: url)
+                }
+            }
             priceLabel.text = "\(m.fiyat!) ₺"
         }
     }

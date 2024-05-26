@@ -76,5 +76,19 @@ extension HomePageVC: UICollectionViewDelegate, UICollectionViewDataSource{
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = moviesList[indexPath.row]
+        performSegue(withIdentifier: "toDetailsVC", sender: movie)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailsVC"{
+            if let senderMovie = sender as? Movie{
+                let destinationVC = segue.destination as! DetailsVC
+                destinationVC.detailMovie = senderMovie
+            }
+        }
+    }
 }
 
