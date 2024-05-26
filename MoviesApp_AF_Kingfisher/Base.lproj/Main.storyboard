@@ -50,6 +50,9 @@
                                                     <rect key="frame" x="23" y="264" width="134" height="35"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="filled" title="ADD TO CART"/>
+                                                    <connections>
+                                                        <action selector="addToCartButton:" destination="8Lk-QE-mMf" eventType="touchUpInside" id="LPN-1Q-pq2"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -63,6 +66,10 @@
                                                 <constraint firstItem="xOQ-73-32x" firstAttribute="leading" secondItem="qga-5u-dGP" secondAttribute="leading" constant="8" id="wb6-5D-4B0"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageViewCell" destination="xOQ-73-32x" id="HU8-GQ-4fe"/>
+                                            <outlet property="priceLabelCell" destination="0pc-5K-sqj" id="4UK-jj-V6R"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -78,6 +85,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="UVA-kf-JUw"/>
                     <connections>
+                        <outlet property="moviesCollectionView" destination="4Uo-yt-VwZ" id="H1h-Si-uTB"/>
                         <segue destination="xkz-x3-zpe" kind="presentation" identifier="toDetailsVC" id="z7p-Dm-7d4"/>
                     </connections>
                 </viewController>
@@ -129,6 +137,11 @@
                             <constraint firstItem="BBh-Hr-G54" firstAttribute="centerX" secondItem="ve9-BQ-5ws" secondAttribute="centerX" id="rfe-TO-zv7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="movieImageView" destination="4cR-jV-VFW" id="WoJ-Te-i5b"/>
+                        <outlet property="nameLabel" destination="BIq-P8-bsv" id="Kyi-kV-eij"/>
+                        <outlet property="priceLabel" destination="FPX-BL-xaq" id="Mhs-me-h2B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjG-cg-oCA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
