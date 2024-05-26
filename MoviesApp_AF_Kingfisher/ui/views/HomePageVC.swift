@@ -57,8 +57,6 @@ extension HomePageVC: UICollectionViewDelegate, UICollectionViewDataSource{
         let movie = moviesList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCell
         
-        cell.imageViewCell.image = UIImage(named: movie.resim!)
-        
         if let url = URL(string: "http://kasimadalan.pe.hu/filmler_yeni/resimler/\(movie.resim!)"){
             DispatchQueue.main.async {
                 cell.imageViewCell.kf.setImage(with: url)
