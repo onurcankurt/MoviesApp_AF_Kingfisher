@@ -20,4 +20,8 @@ class HomePageVM {
     func uploadMovies(){
         mrepo.uploadMovies()
     }
+    
+    func addToCart(movies: [Movie], indexPath: IndexPath){
+        mrepo.addToCart(movies: movies, indexPath: indexPath)
+    }
 }

@@ -27,4 +27,8 @@ class MoviesDaoRepository {
         }
     }
     
+    func addToCart(movies: [Movie], indexPath: IndexPath){
+        print("\(movies[indexPath.row].ad!) added to cart.")
+    }
+    
 }
