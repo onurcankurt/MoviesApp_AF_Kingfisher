@@ -6,18 +6,39 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HomePageVC: UIViewController {
     
     @IBOutlet weak var moviesCollectionView: UICollectionView!
     var moviesList = [Movie]()
-
+    var viewModel = HomePageVM()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         moviesCollectionView.delegate = self
         moviesCollectionView.dataSource = self
         
+        
+        _ = viewModel.movieList.subscribe(onNext: { movies in
+            self.moviesList = movies
+            DispatchQueue.main.async {
+                self.moviesCollectionView.reloadData()
+            }
+        })
+        
+        let design = UICollectionViewFlowLayout()
+        
+        design.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        design.minimumLineSpacing = 10
+        design.minimumInteritemSpacing = 10
+        
+        let screenWidth = UIScreen.main.bounds.width
+        let itemWidth = (screenWidth - 30) / 2
+        
+        design.itemSize = CGSize(width: itemWidth, height: itemWidth * 1.65)
+        moviesCollectionView.collectionViewLayout = design
     }
 }
 
@@ -37,6 +58,13 @@ extension HomePageVC: UICollectionViewDelegate, UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as! MovieCell
         
         cell.imageViewCell.image = UIImage(named: movie.resim!)
+        
+        if let url = URL(string: "http://kasimadalan.pe.hu/filmler_yeni/resimler/\(movie.resim!)"){
+            DispatchQueue.main.async {
+                cell.imageViewCell.kf.setImage(with: url)
+            }
+        }
+        
         cell.priceLabelCell.text = "\(movie.fiyat!) ₺"
         
         cell.cellProtocol = self

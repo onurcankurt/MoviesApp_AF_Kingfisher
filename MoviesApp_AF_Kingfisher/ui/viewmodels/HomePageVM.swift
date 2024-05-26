@@ -6,7 +6,18 @@
 //
 
 import Foundation
+import RxSwift
 
 class HomePageVM {
+    var mrepo = MoviesDaoRepository()
+    var movieList = BehaviorSubject<[Movie]>(value: [Movie]())
     
+    init() {
+        movieList = mrepo.movieList
+        uploadMovies()
+    }
+    
+    func uploadMovies(){
+        mrepo.uploadMovies()
+    }
 }
